@@ -1,0 +1,126 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-bg: #0f0d0a;
+  --color-surface: #1a1714;
+  --color-surface-light: #252119;
+  --color-border: #3d342a;
+  --color-text: #f5f0eb;
+  --color-text-muted: #a89b8c;
+  --color-accent: #D4AF37;
+  --color-accent-light: #e6c65a;
+  --color-positive: #4ade80;
+  --color-negative: #f87171;
+  --color-neutral: #facc15;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Outfit', 'Inter', sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-surface);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent);
+}
+
+/* ========== CUSTOM COMPONENT CLASSES ========== */
+
+@layer components {
+  /* Glass morphism card */
+  .glass {
+    @apply bg-[rgba(26,23,20,0.7)] backdrop-blur-xl border border-[#3d342a] rounded-2xl;
+  }
+
+  /* Primary button */
+  .btn-primary {
+    @apply px-5 py-2.5 bg-primary text-black font-semibold rounded-xl
+           hover:bg-[#e6c65a] hover:shadow-[0_0_20px_rgba(212,175,55,0.4)]
+           active:scale-95 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  /* Input field */
+  .input-field {
+    @apply w-full px-4 py-2.5 bg-coffee-900/70 border border-coffee-800 rounded-xl text-white
+           placeholder-gray-500 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/50
+           transition-all duration-200;
+  }
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #D4AF37, #e6c65a, #c6952e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Smooth transition for all interactive elements */
+button, a, input, select, textarea {
+  transition: all 0.2s ease;
+}
+
+/* Sentiment badge styles */
+.sentiment-positive {
+  background: rgba(74, 222, 128, 0.15);
+  color: #4ade80;
+  border: 1px solid rgba(74, 222, 128, 0.3);
+}
+.sentiment-negative {
+  background: rgba(248, 113, 113, 0.15);
+  color: #f87171;
+  border: 1px solid rgba(248, 113, 113, 0.3);
+}
+.sentiment-neutral {
+  background: rgba(250, 204, 21, 0.15);
+  color: #facc15;
+  border: 1px solid rgba(250, 204, 21, 0.3);
+}
+
+/* Star rating */
+.star-filled {
+  color: #facc15;
+}
+.star-empty {
+  color: #3d342a;
+}
+
+/* Animated gradient border */
+@keyframes borderGlow {
+  0%, 100% { border-color: rgba(212, 175, 55, 0.3); }
+  50% { border-color: rgba(212, 175, 55, 0.7); }
+}
+.glow-border {
+  animation: borderGlow 3s ease-in-out infinite;
+}
+
+/* Pulse dot for status */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+.pulse-dot {
+  animation: pulse-dot 2s ease-in-out infinite;
+}
